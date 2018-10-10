@@ -4,7 +4,6 @@ import com.codeclan.example.WhiskyTracker.models.Whisky;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.criterion.Conjunction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import javax.transaction.Transactional;
