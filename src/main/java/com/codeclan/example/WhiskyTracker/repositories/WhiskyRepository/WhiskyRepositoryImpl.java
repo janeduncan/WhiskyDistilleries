@@ -4,6 +4,7 @@ import com.codeclan.example.WhiskyTracker.models.Whisky;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Conjunction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import javax.transaction.Transactional;
@@ -39,9 +40,14 @@ public class WhiskyRepositoryImpl implements WhiskyRepositoryCustom {
         Session session = entityManager.unwrap(Session.class);
         try {
             Criteria cr = session.createCriteria(Whisky.class);
-//            Conjunction objConjunction = Restrictions.conjunction();
             cr.add(Restrictions.eq("distillery", distillery));
             cr.add(Restrictions.eq("age", age));
+            whiskies = cr.list();
+            // or
+//            Criteria cr = session.createCriteria(Whisky.class);
+//            Conjunction objConjunction = Restrictions.conjunction();
+//            objConjunction.add(Restrictions.eq("distillery", distillery));
+//            objConjunction.add(Restrictions.eq("age", age));
 //            cr.add(objConjunction);
             whiskies = cr.list();
         } catch (HibernateException e) {
